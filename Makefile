@@ -2,12 +2,15 @@
 KVER ?= $(shell uname -r)
 TARGET_DIR := linux-$(KVER)
 
-.PHONY: all install clean setup
+.PHONY: all sign install clean setup
 
 all: setup
 	$(MAKE) -C $(TARGET_DIR) build
 
-install: all
+sign:
+	/usr/src/kernels/$(KVER)/scripts/sign-file sha256 ~/mok/private_key.priv ~/mok/public_key.der $(TARGET_DIR)/amd_capture.ko
+
+install: all sign
 	sudo install -Dm644 $(TARGET_DIR)/amd_capture.ko /lib/modules/$(KVER)/extra/amd_capture.ko
 	sudo depmod -a $(KVER)
 	-sudo modprobe -r amd_capture 2>/dev/null
