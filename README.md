@@ -19,14 +19,7 @@ sudo apt install build-essential linux-headers-$(uname -r) b4
 sudo dnf install kernel-devel kernel-headers gcc make b4
 ```
 
-## First-time install:
-
-```bash
-./setup.sh
-make install
-```
-
-## After Kernel Updates
+## Install & After Kernel Updates
 
 ```bash
 make install

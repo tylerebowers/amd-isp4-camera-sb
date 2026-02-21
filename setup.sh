@@ -52,8 +52,11 @@ ensure_mok_keys_and_enrollment() {
         echo "Found existing MOK keypair in: $MOK_KEY_DIR"
     fi
 
+    echo "$MOK_DER"
+
     # check if key is already enrolled
-    if mokutil --test-key "$MOK_DER" >/dev/null 2>&1; then
+    out="$(sudo mokutil --test-key "$MOK_DER" 2>&1)" || rc=$?
+    if echo "$out" | grep -qi 'already enrolled'; then
         echo "MOK key is already enrolled."
         return 0
     fi
