@@ -10,7 +10,7 @@ MOK_CERT_CN="${MOK_CERT_CN:-amd_capture kernel module signing}"
 
 KVER="${1:-$(uname -r)}"
 TARGET_DIR="linux-$KVER"
-MSG_ID="20260212083426.216430-1-Bin.Du@amd.com"
+MSG_ID="20260302073020.148277-1-Bin.Du@amd.com"
 
 MOK_PRIV="$MOK_KEY_DIR/MOK.priv"
 MOK_PEM="$MOK_KEY_DIR/MOK.pem"
@@ -90,10 +90,10 @@ echo "Setting up AMD ISP4 driver for kernel $KVER..."
 mkdir -p "$TARGET_DIR"
 b4 am -l "$MSG_ID"
 mkdir -p src/drivers/media/platform/amd/isp4
-cd src && git init && git apply --include='drivers/media/platform/amd/isp4/*' ../v8_*.mbx
+cd src && git init && git apply --include='drivers/media/platform/amd/isp4/*' ../v9_*.mbx
 cd ..
 cp src/drivers/media/platform/amd/isp4/*.c src/drivers/media/platform/amd/isp4/*.h "$TARGET_DIR/"
-rm -rf src v8_*.mbx v8_*.cover
+rm -rf src v9_*.mbx v9_*.cover
 
 cat > "$TARGET_DIR/Makefile" << 'EOF'
 KVER ?= $(shell uname -r)

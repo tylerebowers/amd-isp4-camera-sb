@@ -29,7 +29,7 @@ install: sign
 	-sudo modprobe -r amd_capture 2>/dev/null
 	sudo modprobe amd_capture
 	echo "amd_capture" | sudo tee /etc/modules-load.d/amd-camera.conf >/dev/null
-	echo "Check via v4l2:"
+	echo Check via v4l2:
 	v4l2-ctl --list-devices
 
 clean:
