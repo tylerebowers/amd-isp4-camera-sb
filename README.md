@@ -6,7 +6,7 @@ The driver is not yet merged into mainline Linux. This repo downloads the [patch
 
 ## Requirements
 
-- Linux kernel 6.17.9+ (with `amd_isp4` platform driver, tested up to 6.19.6)
+- Linux kernel 6.17.9+ (with `amd_isp4` platform driver, tested up to 6.19.7)
 - Kernel headers
 - Build tools and `b4`
 
